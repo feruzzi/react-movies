@@ -3,7 +3,7 @@ import { getMoviesList, findMovies } from "./Api.js";
 import { useEffect, useState } from "react";
 const App = () => {
   const [popularMovies, setPopularMovies] = useState([]);
-  const [isSearch, setIsSearch] = useState(0);
+  const [isSearch, setIsSearch] = useState([]);
 
   useEffect(() => {
     const getData = setTimeout(() => {
