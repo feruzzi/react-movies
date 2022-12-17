@@ -1,14 +1,15 @@
 import "./App.css";
 import { getMoviesList, findMovies } from "./Api.js";
 import { useEffect, useState } from "react";
+import Category from "./components/Category.js";
 const App = () => {
   const [popularMovies, setPopularMovies] = useState([]);
-  const [isSearch, setIsSearch] = useState([]);
-
+  const [isSearch, setIsSearch] = useState(0);
+  const [category, setCategory] = useState("popular");
   useEffect(() => {
     const getData = setTimeout(() => {
       if (!isSearch) {
-        getMoviesList().then((res) => {
+        getMoviesList(category).then((res) => {
           setPopularMovies(res);
         });
       } else {
@@ -18,7 +19,7 @@ const App = () => {
       }
     }, 800);
     return () => clearTimeout(getData);
-  }, [isSearch]);
+  }, [isSearch, category]);
   // const searchMovies = async (q) => {
   //   if (q) {
   //     const query = await findMovies(q);
@@ -30,12 +31,15 @@ const App = () => {
   //   });
   // }
   // };
+  const handleClickActive = (val) => {
+    setCategory(val);
+  };
   const moviePoster = `${process.env.REACT_APP_MOVIEPOSTER}`;
   const PopularMovieList = () => {
     return popularMovies.map((movie, i) => {
       return (
         <div className="Movie-content" key={i}>
-          <div className="Movie-container">
+          <div className="Movie-card-container">
             <img
               className="Movie-image"
               src={`${moviePoster}${movie.poster_path}`}
@@ -66,6 +70,7 @@ const App = () => {
             }}
           />
         </div>
+        <Category handleClickActive={handleClickActive} />
         <div className="Movie-container">
           <PopularMovieList />
         </div>

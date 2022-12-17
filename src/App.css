@@ -20,6 +20,18 @@
 .App-link {
   color: #61dafb;
 }
+.App-title {
+  font-size: calc(72px + 2vmin);
+  font-weight: bold;
+  background: rgb(240, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(240, 255, 255, 1) 0%,
+    rgba(40, 44, 52, 1) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .Movie-container {
   margin: 16px;
@@ -69,7 +81,7 @@
   -ms-border-radius: 12px;
   -o-border-radius: 12px;
 }
-.Movie-container {
+.Movie-card-container {
   position: relative;
   margin: 0;
 }
@@ -97,4 +109,32 @@
   -moz-border-radius: 16px;
   -ms-border-radius: 16px;
   -o-border-radius: 16px;
+}
+.Category-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.Category-option {
+  border: 2px solid deepskyblue;
+  font-size: 24px;
+  font-weight: 500;
+  border-radius: 12px;
+  cursor: pointer;
+  padding: 8px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+}
+.Category-option:hover {
+  background-color: deepskyblue;
+}
+.Movie-content:not-hover {
+  width: -30%;
+}
+.Category-option.active {
+  background-color: deepskyblue;
 }
